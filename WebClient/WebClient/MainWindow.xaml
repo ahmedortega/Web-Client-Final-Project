@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="400" Width="500" FontSize="14" Background="#04c582">
     <Grid>
-        
+        <Border Margin="25" Background="#2e3137" CornerRadius="20">
+            <StackPanel Margin="25">
+                <Label Content="Login" FontSize="30" HorizontalAlignment="Center" Foreground="White" FontFamily="Times New Roman" FontWeight="Bold"></Label>
+            </StackPanel>
+        </Border>
+        <Label Content="Username :" HorizontalAlignment="Left" Margin="57,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+        <Label Content="Password :" HorizontalAlignment="Left" Margin="57,190,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+        <TextBox Name="UsernameLabel" Background="#545d6a" FontSize="18" Foreground="White" HorizontalAlignment="Left" Height="31" Margin="57,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="381"/>
+        <PasswordBox Name="PasswordLabel" Background="#545d6a" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="57,227,0,0" VerticalAlignment="Top" Width="381" Height="31" Cursor="Arrow"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="173,276,0,0" VerticalAlignment="Top" Width="140" Height="40" Foreground="White" Background="#545d6a" FontSize="22" FontWeight="Bold" FontFamily="Arial"/>
+
     </Grid>
+
 </Window>
