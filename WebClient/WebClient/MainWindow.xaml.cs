@@ -63,63 +63,86 @@ namespace WebClient
                 }
                 else
                 {
-                    MessageBox.Show("the Username or Password is not Correct");
+                    MessageBox.Show("the Username or Password in Vistor User is not Correct");
+                }
+            }
+            else if (emp.UserType == 2)
+            {
+                var response = client.PostAsJsonAsync("Login/searchB/", emp).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("U Logged in successfuly");
+                }
+                else
+                {
+                    MessageBox.Show("the Username or Password in Business User is not Correct");
+                }
+            }
+            else if (emp.UserType == 3)
+            {
+                var response = client.PostAsJsonAsync("Login/searchA/", emp).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("U Logged in successfuly");
+                }
+                else
+                {
+                    MessageBox.Show("the Username or Password in Admin is not Correct");
                 }
             }
             else
             {
-                MessageBox.Show("U Failed");
-            }
-            /*var emp = new Employee();
-            emp.Username = UsernameLabel.Text.Trim();
-            emp.Password = PasswordLabel.Password.Trim();
-            emp.UserType = ComboUserType.SelectedIndex + 1;
-            var response = client.PostAsJsonAsync("Login/search/", emp).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("U Logged in successfuly");
-            }
-            else
-            {
-                MessageBox.Show(response.StatusCode + " With this Message " + response.ReasonPhrase);
-            }
-            */
-        }
-
-        /*public int ComboChecker(string combovalue)
-        {
-            int result = 0;
-            switch(combovalue)
-            {
-                case "0":
-                    result = 1;
-                    break;
-                case "1":
-                    result = 2;
-                    break;
-                case "2":
-                    result = 3;
-                    break;
-            }
-            return result;
-            switch (result)
-            {
-                case 1:
-                    MessageBox.Show("its 1");
-                    break;
-                case 2:
-                    MessageBox.Show("its 2");
-                    break;
-                case 3:
-                    MessageBox.Show("its 3");
-                    break;
+                MessageBox.Show("The is some thing wrong");
             }
         }
-        */
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
     }
 }
+/*var emp = new Employee();
+emp.Username = UsernameLabel.Text.Trim();
+emp.Password = PasswordLabel.Password.Trim();
+emp.UserType = ComboUserType.SelectedIndex + 1;
+var response = client.PostAsJsonAsync("Login/search/", emp).Result;
+if (response.IsSuccessStatusCode)
+{
+    MessageBox.Show("U Logged in successfuly");
+}
+else
+{
+    MessageBox.Show(response.StatusCode + " With this Message " + response.ReasonPhrase);
+}
+*/
+
+/*public int ComboChecker(string combovalue)
+{
+    int result = 0;
+    switch(combovalue)
+    {
+        case "0":
+            result = 1;
+            break;
+        case "1":
+            result = 2;
+            break;
+        case "2":
+            result = 3;
+            break;
+    }
+    return result;
+    switch (result)
+    {
+        case 1:
+            MessageBox.Show("its 1");
+            break;
+        case 2:
+            MessageBox.Show("its 2");
+            break;
+        case 3:
+            MessageBox.Show("its 3");
+            break;
+    }
+}
+*/
