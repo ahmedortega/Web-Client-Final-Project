@@ -16,7 +16,6 @@ C:\Users\Ahmed Ortega\source\repos\WebClient\WebClient\obj\Debug\WebClient.pdb
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\WebClient.exe.config
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\WebClient.exe
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\WebClient.pdb
-C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.csprojResolveAssemblyReference.cache
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\MainWindow.g.cs
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\App.g.cs
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient_MarkupCompile.cache
@@ -28,3 +27,8 @@ C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebCli
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.csproj.CoreCompileInputs.cache
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.exe
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.pdb
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.csprojResolveAssemblyReference.cache
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\System.Net.Http.Formatting.xml
