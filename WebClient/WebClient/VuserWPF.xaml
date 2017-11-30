@@ -5,15 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebClient"
         mc:Ignorable="d"
-        Title="VuserWPF" Height="400" Width="500">
+        Title="VuserWPF" Width="1351" Height="768" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <Button Content="Articles" HorizontalAlignment="Left" Margin="36,229,0,0" VerticalAlignment="Top" Width="75" Click="Button_Get_Articles"/>
-        <Button Content="Article(name)" HorizontalAlignment="Left" Margin="194,234,0,0" VerticalAlignment="Top" Width="75" Click="Button_Get_ArticleByName"/>
-        <Button Content="Article(Author)" HorizontalAlignment="Left" Margin="368,234,0,0" VerticalAlignment="Top" Width="75" Click="Button_Get_ArticleByAuthorName"/>
-        <Button Content="Sign Out" HorizontalAlignment="Left" Margin="194,299,0,0" VerticalAlignment="Top" Width="75" Click="Button_SignOut"/>
-        <DataGrid Name="UserGrid" HorizontalAlignment="Left" Height="120" Margin="25,45,0,0" VerticalAlignment="Top" Width="441" SelectionChanged="DataGrid_SelectionChanged"/>
-        <TextBox Name="txt_authorname" HorizontalAlignment="Left" Height="23" Margin="337,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txt_articleName" HorizontalAlignment="Left" Height="23" Margin="166,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF780000" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Border Margin="25" Background="#2e3137" CornerRadius="20">
+            <StackPanel Margin="20">
+                <Label Content="Visitor User" FontSize="70" HorizontalAlignment="Center" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="248,0" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+
+        <Button Content="Articles" HorizontalAlignment="Left" Margin="510,490,0,0" VerticalAlignment="Top" Width="320" Click="Button_Get_Articles" Height="86" FontFamily="Chiller" FontSize="72">
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFA63737" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Article (name)" Foreground="White" HorizontalAlignment="Left" Margin="95,568,0,0" VerticalAlignment="Top" Width="300" Click="Button_Get_ArticleByName" Height="80" FontFamily="Forte" FontSize="36">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFA63737" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Article (Author)" Foreground="White" FontSize="36" FontFamily="Forte" HorizontalAlignment="Center" Margin="958,556,93,0" VerticalAlignment="Top" Width="300" Click="Button_Get_ArticleByAuthorName" Height="80" BorderThickness="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF9C3131" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Sign Out" HorizontalAlignment="Left" Margin="482,631,0,0" VerticalAlignment="Top" Width="380" Height="90" FontSize="55" FontWeight="Heavy" FontFamily="Algerian" Click="Button_SignOut">
+            <Button.Foreground>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Button.Foreground>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF6C5D5D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <DataGrid Name="UserGrid" HorizontalAlignment="Left" Height="307" Margin="25,139,0,0" VerticalAlignment="Top" Width="1301" SelectionChanged="DataGrid_SelectionChanged" FontFamily="Microsoft JhengHei Light" FontSize="28"/>
+        <TextBox Name="txt_authorname" HorizontalAlignment="Left" Height="70" Margin="958,472,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontFamily="Sitka Banner" FontWeight="Bold" FontSize="48"/>
+        <TextBox Name="txt_articleName" HorizontalAlignment="Left" Height="70" Margin="95,484,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontFamily="Sitka Display" FontWeight="Bold" FontSize="48"/>
 
     </Grid>
+
 </Window>
