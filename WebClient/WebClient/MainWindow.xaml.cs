@@ -60,6 +60,9 @@ namespace WebClient
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("U Logged in successfuly");
+                    VuserWPF vuserfrom = new VuserWPF();
+                    this.Hide();
+                    vuserfrom.ShowDialog();
                 }
                 else
                 {

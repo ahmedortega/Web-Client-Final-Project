@@ -31,3 +31,6 @@ C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebCli
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\WebClient.csprojResolveAssemblyReference.cache
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\VuserWPF.g.cs
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\VuserWPF.baml

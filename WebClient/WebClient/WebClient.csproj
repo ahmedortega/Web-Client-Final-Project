@@ -65,7 +65,11 @@
     <Compile Include="Article.cs" />
     <Compile Include="Author.cs" />
     <Compile Include="BUser.cs" />
+    <Compile Include="PocoArticles.cs" />
     <Compile Include="VUser.cs" />
+    <Compile Include="VuserWPF.xaml.cs">
+      <DependentUpon>VuserWPF.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VuserWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
