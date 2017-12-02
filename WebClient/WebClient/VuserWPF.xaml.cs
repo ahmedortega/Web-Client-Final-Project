@@ -64,7 +64,6 @@ namespace WebClient
                 List<PocoArticles> articleList = new List<PocoArticles>();
                 articleList.Add(articles);
                 UserGrid.ItemsSource = articleList;
-
             }
             else
             {

@@ -75,6 +75,10 @@ namespace WebClient
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("U Logged in successfuly");
+                    BuserWPF buserform = new BuserWPF();
+                    this.Hide();
+                    buserform.ShowDialog();
+
                 }
                 else
                 {
