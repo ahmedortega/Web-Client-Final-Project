@@ -105,23 +105,29 @@ namespace WebClient
             var id = txt_articleSerial.Text.Trim();
             PocoArticles article = new PocoArticles();
 
-            article.title = txt_Title.Text.Trim();
-            article.subject = txt_Subject.Text.Trim();
-            article.authorFname = txt_Fname.Text.Trim();
-            article.authorLname = txt_Lname.Text.Trim();
+            if (!string.IsNullOrEmpty(txt_Title.Text.Trim()))
+                article.title = txt_Title.Text.Trim();
+            if (!string.IsNullOrEmpty(txt_Subject.Text.Trim()))
+                article.subject = txt_Subject.Text.Trim();
+            if ( !string.IsNullOrEmpty(txt_Fname.Text.Trim()) )
+                article.authorFname = txt_Fname.Text.Trim();
+            if (!string.IsNullOrEmpty(txt_Lname.Text.Trim()))
+                article.authorLname = txt_Lname.Text.Trim();
             article.authorWorkYears = changeToInteger(txt_work.Text.Trim());
             article.authorId = changeToInteger(txt_A_id.Text.Trim());
             article.authorBirthYear = changeToInteger(txt_birth.Text.Trim());
-
+            RetriveArticles();
 
             HttpResponseMessage response = client.PostAsJsonAsync("articles/post", article).Result;
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show("The Article with this id: " + id + " Is Added");
+                RetriveArticles();
             }
             else
             {
                 MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                RetriveArticles();
             }
             RetriveArticles();
             clearTests();
@@ -230,16 +236,50 @@ namespace WebClient
             int val = 0;
             if (s1 != null)
             {
-                bool result1 = int.TryParse(txt_work.Text.Trim(), out val);
+                bool result1 = int.TryParse(s1.Trim(), out val);
                 if (!result1)
                 {
-                    MessageBox.Show("the Author Fields are the problem it might br Empty");
+                    MessageBox.Show("U won't add Author. or the author fields are empty");
                 }
             }
             return val;
         }
         private void Text_Password(Object sender, RoutedEventArgs args)
         {
+        }
+
+        private void Button_update_profile(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/busers/");
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var password = PasswordLabel.Password.Trim();
+            BUser buser = new BUser();
+
+            if (!string.IsNullOrEmpty(text_BFname.Text.Trim()))
+                buser.Fname = text_BFname.Text.Trim();
+            if (!string.IsNullOrEmpty(text_BLname.Text.Trim()))
+                buser.Lname = text_BLname.Text.Trim();
+            if (!string.IsNullOrEmpty(text_BEmail.Text.Trim()))
+               buser.Email = text_BEmail.Text.Trim();
+            if (!string.IsNullOrEmpty(text_BPhone.Text.Trim()))
+                buser.Phone = text_BPhone.Text.Trim();
+            if (!string.IsNullOrEmpty(text_BUsername.Text.Trim()))
+                buser.Username = text_BUsername.Text.Trim();
+            buser.Password = B_Password.Password.Trim();
+            var url = "articles/put/" + password;
+            HttpResponseMessage response = client.PutAsJsonAsync(url, buser).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Ur Profile is Updated , Please sign in again");
+                this.Hide();
+                MainWindow main = new MainWindow();
+                main.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+            }
         }
     }
 }

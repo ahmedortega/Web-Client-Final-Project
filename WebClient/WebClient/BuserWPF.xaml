@@ -13,11 +13,7 @@
                 <GradientStop Color="#FF36CD09"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Margin="50" Background="#2e3137" CornerRadius="20">
-            <StackPanel Margin="20">
-                <Label Content="Bussiness User" FontSize="70" HorizontalAlignment="Center" Foreground="White" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="248,0" FontWeight="Bold"/>
-            </StackPanel>
-        </Border>
+        <Border Margin="50" Background="#2e3137" CornerRadius="20"/>
 
         <Button Content="Articles" HorizontalAlignment="Left" Margin="803,260,0,0" VerticalAlignment="Top" Width="160" Click="Button_Get_Articles" Height="52" FontFamily="Chiller" FontSize="48" BorderBrush="White" Foreground="White">
             <Button.Background>
@@ -55,7 +51,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Sign Out" HorizontalAlignment="Left" Margin="486,618,0,0" VerticalAlignment="Top" Width="380" Height="90" FontSize="55" FontWeight="Heavy" FontFamily="Algerian" Click="Button_SignOut">
+        <Button Content="Sign Out" HorizontalAlignment="Left" Margin="572,618,0,0" VerticalAlignment="Top" Width="271" Height="90" FontSize="55" FontWeight="Heavy" FontFamily="Algerian" Click="Button_SignOut">
             <Button.Foreground>
                 <RadialGradientBrush>
                     <GradientStop Color="Black"/>
@@ -101,8 +97,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Update My Profile" HorizontalAlignment="Left" Margin="140,618,0,0" VerticalAlignment="Top" Width="226" Height="67" BorderBrush="Black" FontSize="24" FontFamily="Tw Cen MT Condensed Extra Bold">
+        <Button Content="Update My Profile" HorizontalAlignment="Left" Margin="121,658,0,0" VerticalAlignment="Top" Width="291" Height="49" BorderBrush="Black" FontSize="24" FontFamily="Tw Cen MT Condensed Extra Bold" Click="Button_update_profile">
             <Button.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="1"/>
@@ -116,8 +111,20 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <PasswordBox PasswordChanged="Text_Password" Name="PasswordLabel" Background="#FF8C9986" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="230,569,0,0" VerticalAlignment="Top" Width="220" Height="30" Cursor="Arrow"/>
-        <Label Content="Enter Passowrd :" HorizontalAlignment="Left" Margin="59,563,0,0" VerticalAlignment="Top" Width="166" Height="44" Background="#00000000" FontSize="20" Foreground="White" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <PasswordBox PasswordChanged="Text_Password" Name="PasswordLabel" Background="#FF8C9986" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="230,460,0,0" VerticalAlignment="Top" Width="220" Height="30" Cursor="Arrow"/>
+        <Label Content="Enter Passowrd :" HorizontalAlignment="Left" Margin="59,455,0,0" VerticalAlignment="Top" Width="166" Height="44" Background="#00000000" FontSize="20" Foreground="White" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <TextBox Name="text_BFname" HorizontalAlignment="Left" Height="23" Margin="121,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
+        <TextBox Name="text_BLname" HorizontalAlignment="Left" Height="23" Margin="292,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
+        <TextBox Name="text_BEmail" HorizontalAlignment="Left" Height="23" Margin="121,571,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
+        <TextBox Name="text_BPhone" HorizontalAlignment="Left" Height="23" Margin="292,571,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
+        <PasswordBox PasswordChanged="Text_Password" Name="B_Password" HorizontalAlignment="Left" Margin="292,629,0,0" VerticalAlignment="Top" Width="120" Height="23" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
+        <Label Content="new Fname:" HorizontalAlignment="Left" Margin="121,485,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Background="#00000000" Foreground="White"/>
+        <Label Content="new Lname:" HorizontalAlignment="Left" Margin="292,486,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Background="#00000000" Foreground="White"/>
+        <Label Content="new Email:" HorizontalAlignment="Left" Margin="121,538,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Background="#00000000" Foreground="White"/>
+        <Label Content="new Phone:" HorizontalAlignment="Left" Margin="292,535,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Background="#00000000" Foreground="White"/>
+        <Label Content="new password:" HorizontalAlignment="Left" Margin="292,600,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Background="#00000000" Foreground="White"/>
+        <Label Content="new Username:" HorizontalAlignment="Left" Margin="121,599,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Foreground="White"/>
+        <TextBox Name="text_BUsername" HorizontalAlignment="Left" Height="23" Margin="121,629,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" Background="#FF3C3737" BorderBrush="White" Foreground="White"/>
 
 
     </Grid>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="500" FontSize="14" Background="#04c582">
+        Title="MainWindow" Height="400" Width="500" FontSize="14" Background="#04c582" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border Margin="25" Background="#2e3137" CornerRadius="20">
             <StackPanel Margin="25">
