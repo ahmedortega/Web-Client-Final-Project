@@ -91,6 +91,9 @@ namespace WebClient
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("U Logged in successfuly");
+                    AdminWPF adminform = new AdminWPF();
+                    this.Hide();
+                    adminform.ShowDialog();
                 }
                 else
                 {

@@ -62,17 +62,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Admin.cs" />
+    <Compile Include="AdminWPF.xaml.cs">
+      <DependentUpon>AdminWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Article.cs" />
     <Compile Include="Author.cs" />
     <Compile Include="BUser.cs" />
     <Compile Include="BuserWPF.xaml.cs">
       <DependentUpon>BuserWPF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs" />
     <Compile Include="PocoArticles.cs" />
     <Compile Include="VUser.cs" />
     <Compile Include="VuserWPF.xaml.cs">
       <DependentUpon>VuserWPF.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BuserWPF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

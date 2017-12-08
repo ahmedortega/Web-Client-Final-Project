@@ -35,3 +35,5 @@ C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebCli
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\VuserWPF.baml
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\BuserWPF.g.cs
 C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\BuserWPF.baml
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\AdminWPF.g.cs
+C:\Users\Ahmed Ortega\Documents\GitHub\Web-Client-Final-Project\WebClient\WebClient\obj\Debug\AdminWPF.baml
