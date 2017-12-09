@@ -72,6 +72,7 @@
       <DependentUpon>BuserWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs" />
+    <Compile Include="EncryptDecrypt.cs" />
     <Compile Include="PocoArticles.cs" />
     <Compile Include="VUser.cs" />
     <Compile Include="VuserWPF.xaml.cs">

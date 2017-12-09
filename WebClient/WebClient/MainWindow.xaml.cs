@@ -47,12 +47,13 @@ namespace WebClient
         }
         private void Button_Login(object sender, RoutedEventArgs e)
         {
+            EncryptDecrypt cybo = new EncryptDecrypt();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/");
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             var emp = new Employee();
             emp.Username = UsernameLabel.Text.Trim();
-            emp.Password = PasswordLabel.Password.Trim();
+            emp.Password = cybo.EncryptFun(PasswordLabel.Password.Trim());
             emp.UserType = ComboUserType.SelectedIndex + 1;
             if (emp.UserType == 1)
             {

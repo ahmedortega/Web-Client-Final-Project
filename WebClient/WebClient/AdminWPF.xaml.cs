@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
+
 namespace WebClient
 {
     /// <summary>
@@ -82,6 +84,7 @@ namespace WebClient
 
         private void btn_add_user(object sender, RoutedEventArgs e)
         {
+            EncryptDecrypt cypo = new EncryptDecrypt();
             HttpResponseMessage response = new HttpResponseMessage();
             var url = "";
             HttpClient client = new HttpClient();
@@ -93,11 +96,11 @@ namespace WebClient
             if (!string.IsNullOrEmpty(txt_Fname.Text.Trim()))
                 emp.Lname = txt_Lname.Text.Trim();
             if (!string.IsNullOrEmpty(txt_Phone.Text.Trim()))
-                emp.Password = txt_Phone.Text.Trim();
+                emp.Phone = txt_Phone.Text.Trim();
             if (!string.IsNullOrEmpty(txt_Username.Text.Trim()))
                 emp.Username = txt_Username.Text.Trim();
             if (!string.IsNullOrEmpty(txt_Password.Password.Trim()))
-                emp.Password = txt_Password.Password.Trim();
+                emp.Password = cypo.EncryptFun(txt_Password.Password.Trim());
             emp.Email = txt_Email_b.Text.Trim();
             emp.UserType = changeToInteger(txt_UserType_a_u.Text.Trim());
             if (emp != null && !string.IsNullOrEmpty(emp.Fname) && !string.IsNullOrEmpty(emp.Username)&& !string.IsNullOrEmpty(emp.Password))
@@ -116,12 +119,13 @@ namespace WebClient
             }
             else
             {
-                MessageBox.Show("please fill the User's information to Add");
+                MessageBox.Show("please fill the User's information to Added");
             }
 
         }
         private void btn_update_user(object sender, RoutedEventArgs e)
         {
+            EncryptDecrypt cypo = new EncryptDecrypt();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/Admins/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -131,7 +135,7 @@ namespace WebClient
             emp.Lname = txt_Lname.Text.Trim();
             emp.Password = txt_Phone.Text.Trim();
             emp.Username = txt_Username.Text.Trim();
-            emp.Password = txt_Password.Password.Trim();
+            emp.Password = cypo.EncryptFun(txt_Password.Password.Trim());
             emp.Email = txt_Email_b.Text.Trim();
             emp.UserType = changeToInteger(txt_UserType_a_u.Text.Trim());
             emp.Id = changeToInteger(txt_Id_u.Text.Trim());
@@ -172,6 +176,23 @@ namespace WebClient
             MainWindow mainform = new MainWindow();
             this.Hide();
             mainform.Show();
+        }
+        static string Encrypt(string value)//for encryption of text
+        {
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
+                return Convert.ToBase64String(data);
+            }
+        }
+
+        private void txt_Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txt_Password.Password = Encrypt(txt_Password.Password.Trim());
+        }
+        private void txt_Email_b_TextChanged(object sender, TextChangedEventArgs e)
+        {
         }
     }
 }
