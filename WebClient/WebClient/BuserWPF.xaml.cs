@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -45,6 +46,23 @@ namespace WebClient
         private void Button_Get_Articles(object sender, RoutedEventArgs e)
         {
             RetriveArticles();
+        }
+        private void Button_Get_Authors(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/busers/");
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync("GetAuthors").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var authors = response.Content.ReadAsAsync<IEnumerable<Author>>().Result;
+                UserGrid.ItemsSource = authors;
+            }
+            else
+            {
+                MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+            }
         }
 
         private void Button_Get_Serial(object sender, RoutedEventArgs e)
@@ -177,18 +195,25 @@ namespace WebClient
             article.authorWorkYears = changeToInteger(txt_work.Text.Trim());
             article.authorId = changeToInteger(txt_A_id.Text.Trim());
             article.authorBirthYear = changeToInteger(txt_birth.Text.Trim());
-            var url = "articles/put/" + id;
-            HttpResponseMessage response = client.PutAsJsonAsync(url, article).Result;
-            if (response.IsSuccessStatusCode)
+            if (!string.IsNullOrEmpty(article.title))
             {
-                MessageBox.Show("The Article with this id: " + id + " Is Updated");
+                var url = "articles/put/" + id;
+                HttpResponseMessage response = client.PutAsJsonAsync(url, article).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("The Article with this id: " + id + " Is Updated");
+                }
+                else
+                {
+                    MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                }
+                RetriveArticles();
+                clearTests();
             }
             else
             {
-                MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                MessageBox.Show("please fill the title of the article");
             }
-            RetriveArticles();
-            clearTests();
         }
 
         private void txt_A_id_TextChanged(object sender, TextChangedEventArgs e)
@@ -247,13 +272,68 @@ namespace WebClient
         private void Text_Password(Object sender, RoutedEventArgs args)
         {
         }
-
-        private void Button_update_profile(object sender, RoutedEventArgs e)
+        public byte[] GetImageByteArray(BitmapImage image)
         {
+            MemoryStream memStream = new MemoryStream();
+            try
+            {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(memStream);
+                return memStream.ToArray();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please Upload the image ");
+            }
+            return memStream.ToArray();
+        }
+        public BitmapImage getImageFromByteArray(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0)
+                return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+        BitmapImage MyBitmapImage;
+        private void btn_upload_image(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MyBitmapImage = new BitmapImage();
+                MyBitmapImage.BeginInit();
+                MyBitmapImage.UriSource = new Uri(txtImagePath.Text);
+                MyBitmapImage.EndInit();
+                ImageControl.Source = MyBitmapImage;
+            }
+            catch
+            {
+                MessageBox.Show("Error In Loading the image");
+            }
+
+        }
+
+            private void Button_update_profile(object sender, RoutedEventArgs e)
+        {
+            var username = "";
+            EncryptDecrypt cypo = new EncryptDecrypt();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/busers/");
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var password = PasswordLabel.Password.Trim();
+            var password = cypo.EncryptFun(PasswordLabel.Password.Trim());
+            if ( !string.IsNullOrEmpty(UsernameLabel.Text.Trim() ) )
+                username = UsernameLabel.Text.Trim();
             BUser buser = new BUser();
 
             if (!string.IsNullOrEmpty(text_BFname.Text.Trim()))
@@ -266,19 +346,59 @@ namespace WebClient
                 buser.Phone = text_BPhone.Text.Trim();
             if (!string.IsNullOrEmpty(text_BUsername.Text.Trim()))
                 buser.Username = text_BUsername.Text.Trim();
-            buser.Password = B_Password.Password.Trim();
-            var url = "articles/put/" + password;
-            HttpResponseMessage response = client.PutAsJsonAsync(url, buser).Result;
-            if (response.IsSuccessStatusCode)
+            buser.Password = cypo.EncryptFun(B_Password.Password.Trim());
+            buser.Image = GetImageByteArray(MyBitmapImage);
+            if (buser != null && !string.IsNullOrEmpty(buser.Fname) && !string.IsNullOrEmpty(buser.Username) && !string.IsNullOrEmpty(buser.Password) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Ur Profile is Updated , Please sign in again");
-                this.Hide();
-                MainWindow main = new MainWindow();
-                main.ShowDialog();
+                var url = "Profile/put/" + username + "/" + password;
+                HttpResponseMessage response = client.PutAsJsonAsync(url, buser).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Ur Profile is Updated , Please sign in again");
+                    this.Hide();
+                    MainWindow main = new MainWindow();
+                    main.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                }
             }
             else
             {
-                MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                MessageBox.Show("Please fill ur new information");
+            }
+        }
+        private void Button_ur_profile(object sender, RoutedEventArgs e)
+        {
+            var username = "";
+            EncryptDecrypt cypo = new EncryptDecrypt();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost/JournalProjectWebApp/busers/");
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            if ( !string.IsNullOrEmpty(UsernameLabel.Text.Trim() ) )
+                username = UsernameLabel.Text.Trim();
+            var password = cypo.EncryptFun(PasswordLabel.Password.Trim());
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(username))
+            {
+                var url = "Profile/get/" + username + "/" + password;
+                HttpResponseMessage response = client.GetAsync(url).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var Buser = response.Content.ReadAsAsync<BUser>().Result;
+                    List<BUser> Blist = new List<BUser>();
+                    Blist.Add(Buser);
+                    UserGrid.ItemsSource = Blist;
+                    ImageControl.Source = getImageFromByteArray(Buser.Image);
+                }
+                else
+                {
+                    MessageBox.Show(response.StatusCode + response.ReasonPhrase);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill ur new information");
             }
         }
     }
