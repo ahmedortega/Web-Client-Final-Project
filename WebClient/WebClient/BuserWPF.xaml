@@ -138,7 +138,7 @@
         <Label Content="new Username:" HorizontalAlignment="Left" Margin="23,531,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontWeight="Bold" Foreground="White"/>
         <Button Content="upload" HorizontalAlignment="Left" Margin="421,620,0,0" VerticalAlignment="Top" Width="74" Click="btn_upload_image" FontSize="16"/>
         <TextBox x:Name="txtImagePath" HorizontalAlignment="Left" Height="29" Margin="380,585,0,0" TextWrapping="Wrap" Text="D:\Images\1.jpg" VerticalAlignment="Top" Width="174" FontSize="16"/>
-        <Image x:Name="ImageControl" HorizontalAlignment="Left" Height="178" Margin="348,401,0,0" VerticalAlignment="Top" Width="220"/>
+        <Image x:Name="ImageControl" HorizontalAlignment="Left" Height="178" Margin="348,401,0,0" VerticalAlignment="Top" Width="220" />
         <TextBox Name="UsernameLabel" Background="#FF8C9986" Foreground="White" HorizontalAlignment="Left" Margin="160,361,0,0" VerticalAlignment="Top" Width="140" Height="25" Cursor="Arrow" FontSize="16"/>
         <PasswordBox PasswordChanged="Text_Password" Name="PasswordLabel" Background="#FF8C9986" Foreground="White" HorizontalAlignment="Left" Margin="452,360,0,0" VerticalAlignment="Top" Width="140" Height="25" Cursor="Arrow" FontSize="16"/>
         <Label Content="Enter Username:" HorizontalAlignment="Left" Margin="16,360,0,0" VerticalAlignment="Top" Width="139" Height="29" Background="#00000000" Foreground="White" FontWeight="Bold" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="16"/>
@@ -162,6 +162,34 @@
                 <RadialGradientBrush>
                     <GradientStop Color="Black" Offset="0"/>
                     <GradientStop Color="#FF3D5164" Offset="1"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Crop" HorizontalAlignment="Left" Margin="597,524,0,0" VerticalAlignment="Top" Width="140" Height="35" BorderBrush="Black" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" Click="Button_Crop">
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFE9FF9C"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FF474931"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Rotate" HorizontalAlignment="Left" Margin="597,436,0,0" VerticalAlignment="Top" Width="140" Height="35" BorderBrush="Black" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" Click="Button_Rotate">
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFE9FF9C"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FF474931"/>
                 </RadialGradientBrush>
             </Button.Background>
         </Button>

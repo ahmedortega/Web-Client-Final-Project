@@ -307,6 +307,9 @@ namespace WebClient
             return image;
         }
         BitmapImage MyBitmapImage;
+
+        public object SelectionRectangle { get; private set; }
+
         private void btn_upload_image(object sender, RoutedEventArgs e)
         {
             try
@@ -400,6 +403,56 @@ namespace WebClient
             {
                 MessageBox.Show("Please fill ur new information");
             }
+        }
+
+        private void Button_Rotate(object sender, RoutedEventArgs e)
+        {
+            MyBitmapImage = new BitmapImage();
+            MyBitmapImage.BeginInit();
+            MyBitmapImage.UriSource = new Uri(txtImagePath.Text, UriKind.RelativeOrAbsolute);
+            MyBitmapImage.Rotation = Rotation.Rotate90;
+            MyBitmapImage.EndInit();
+            ImageControl.Source = MyBitmapImage;
+        }
+        /*private void Button_Crop(object sender, RoutedEventArgs e)
+        {
+            MyBitmapImage = new BitmapImage();
+            MyBitmapImage.BeginInit();
+            MyBitmapImage.UriSource = new Uri(txtImagePath.Text, UriKind.RelativeOrAbsolute);
+            MyBitmapImage.EndInit();
+            BitmapSource bs = new CroppedBitmap((BitmapSource)ImageControl.Source, new Int32Rect(100, 100, 250, 270));
+            ImageControl.Source = bs;
+        }
+        public void CropImage(int x, int y, int width, int height)
+        {
+            string imagePath = @"C:\Users\Admin\Desktop\test.jpg";
+            Bitmap croppedImage;
+
+            // Here we capture the resource - image file.
+            using (var originalImage = new Bitmap(imagePath))
+            {
+                Rectangle crop = new Rectangle(x, y, width, height);
+
+                // Here we capture another resource.
+                croppedImage = originalImage.Clone(crop, originalImage.PixelFormat);
+
+            } // Here we release the original resource - bitmap in memory and file on disk.
+
+            // At this point the file on disk already free - you can record to the same path.
+            croppedImage.Save(imagePath, ImageFormat.Jpeg);
+
+            // It is desirable release this resource too.
+            croppedImage.Dispose();
+        }*/
+        private void Button_Crop(object sender, RoutedEventArgs e)
+        {
+            MyBitmapImage = new BitmapImage();
+            MyBitmapImage.BeginInit();
+            MyBitmapImage.UriSource = new Uri(txtImagePath.Text);
+            MyBitmapImage.EndInit();
+            ImageControl.Source = MyBitmapImage;
+            EllipseGeometry clipGeometry = new EllipseGeometry(new Point(100, 100), 50, 25);
+            ImageControl.Clip = clipGeometry;
         }
     }
 }
